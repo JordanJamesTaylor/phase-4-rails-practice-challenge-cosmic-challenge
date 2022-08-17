@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  
+  resources :planets, only: [:index]
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :missions, only: [:create]
+  
+  resources :scientists
+  resources :scientists do
+    resources :missions, only: [:index]
+  end
+
 end
